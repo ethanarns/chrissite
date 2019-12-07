@@ -1,6 +1,7 @@
 $mainBlue: #3268be;
 $darkerBlue: #275091;
 $lighterBlue: #4178cf;
+$offWhite: #f8f8f8;
 $headerHeight: 10rem;
 $imgPadding: 1rem;
 $imgPaddingMobile: $imgPadding / 1.5;
@@ -39,10 +40,14 @@ body {
         margin: 0 auto;
         max-width: $maxWidth;
         width: 100%;
-        img {
-            padding: $imgPadding;
-            height: $headerHeight - ($imgPadding * 2);
-            float: left;
+        a {
+            display: block;
+            width:100%;
+            img {
+                padding: $imgPadding;
+                height: $headerHeight - ($imgPadding * 2);
+                float: left;
+            }
         }
         ul {
             float: right;
@@ -70,9 +75,10 @@ body {
         }
     }
 }
+
 $bodyHeaderHeight: 30rem;
-$ctaHeight: 3rem;
-$ctaWidth: 7rem;
+$ctaHeight: 4rem;
+$ctaWidth: 10rem;
 #wrap-body {
     margin: 0 auto;
     //max-width: $maxWidth;
@@ -83,31 +89,48 @@ $ctaWidth: 7rem;
         position: relative;
         height:$bodyHeaderHeight;
         background-position: center;
-        background-color: white;
+        background-color: $lighterBlue;
         background-size: cover;
-        background-image: url('../images/carpet-cleaning-header2.png');
+        text-align: center;
+        //background-image: url('../images/carpet-cleaning-header2.png');
         button {
             height: $ctaHeight;
             width: $ctaWidth;
             cursor: pointer;
-            position: absolute;
-            left: 50%;
-            background-color: $mainBlue;
-            top: ($bodyHeaderHeight)-($ctaHeight) - 5rem;
+            background-color: rgb(240, 155, 59);
             border-radius: 4px;
-            border: 1px solid $darkerBlue;
             box-shadow: 0px 0px 14px -1px $darkerBlue;
+            padding: 0;
+            margin-top: 20rem;
             a {
-                color: #ffffff;
-                text-shadow:1px 1px 0px grey;
+                color: white;
+                //text-shadow:1px 1px 0px grey;
                 text-decoration: none;
                 display: inline-block;
                 height: $ctaHeight;
+                font-size: 1.5rem;
                 line-height: $ctaHeight*0.99;
+                width: 100%;
             }
         }
         button:hover {
             background-color: $lighterBlue;
+        }
+        .heroText {
+            color: $offWhite;
+            position: absolute;
+            text-align: center;
+            top: 10rem;
+            width: 100%;
+            h3 {
+                font-size: 2.5rem;
+                text-align: center;
+                margin: 0;
+                margin-bottom: 1rem;
+            }
+            small {
+                font-size: 1rem;
+            }
         }
     }
 }
@@ -116,6 +139,13 @@ $ctaWidth: 7rem;
 @media only screen and (max-width: 600px) {
     #wrap-header {
         height: $headerHeightMobile !important;
+        header > a {
+            height: $headerHeightMobile;
+            text-align: center;
+        }
+        ul {
+            display: none;
+        }
         li {
             padding: 0 !important;
             padding-right: 1rem !important;
@@ -123,15 +153,17 @@ $ctaWidth: 7rem;
             font-size: 1.25rem !important;
         }
         img {
+            margin: 0 auto;
+            float: none !important;
             padding: $imgPaddingMobile !important;
             height: $headerHeightMobile - ($imgPaddingMobile * 2) !important;
         }
     }
-    #wrap-body {
-        #cta {
-            left: calc(50% - 3.5rem);
-        }
-    }
+    // #wrap-body {
+    //     #cta {
+    //         left: calc(50% - 3.5rem);
+    //     }
+    // }
 }
 
 // For dumbkopfs who use IE in 2019
