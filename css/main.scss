@@ -1,6 +1,9 @@
 $mainBlue: #3268be;
 $darkerBlue: #275091;
 $lighterBlue: #4178cf;
+$complimentary: #fd9c47;
+$complimentary-light: #ffb06b;
+$white: #ffffff;
 $headerHeight: 10rem;
 $imgPadding: 1rem;
 $imgPaddingMobile: $imgPadding / 1.5;
@@ -24,14 +27,14 @@ body {
     height: $callUsHeight;
     line-height: $callUsHeight;
     text-align: center;
-    color: #ffffff;
+    color: $white;
 }
 
 #wrap-header {
     z-index: 10;
     width: 100%;
     height: $headerHeight;
-    background-color: #ffffff;
+    background-color: $white;
     box-shadow: 3px 1px 5px rgba(0,0,0,.4);
     position: relative;
     header {
@@ -72,7 +75,7 @@ body {
 }
 $bodyHeaderHeight: 30rem;
 $ctaHeight: 3rem;
-$ctaWidth: 7rem;
+$ctaWidth: 8rem;
 #wrap-body {
     margin: 0 auto;
     //max-width: $maxWidth;
@@ -83,22 +86,22 @@ $ctaWidth: 7rem;
         position: relative;
         height:$bodyHeaderHeight;
         background-position: center;
-        background-color: white;
+        background-color: $lighterBlue;
         background-size: cover;
-        background-image: url('../images/carpet-cleaning-header2.png');
+        //background-image: url('../images/carpet-cleaning-header2.png');
         button {
             height: $ctaHeight;
             width: $ctaWidth;
             cursor: pointer;
             position: relative;
             left: 50%;
-            background-color: $mainBlue;
+            background-color: $complimentary;
             top: ($bodyHeaderHeight / 2)-($ctaHeight / 2);
             border-radius: 4px;
             border: 1px solid $darkerBlue;
             box-shadow: 0px 0px 14px -1px $darkerBlue;
             a {
-                color: #ffffff;
+                color: $white;
                 text-shadow:1px 1px 0px grey;
                 text-decoration: none;
                 display: inline-block;
@@ -107,7 +110,12 @@ $ctaWidth: 7rem;
             }
         }
         button:hover {
-            background-color: $lighterBlue;
+            background-color: $complimentary-light;
+        }
+        p {
+            position: absolute;
+            width: 100%;
+            text-align: center;
         }
     }
 }
@@ -129,7 +137,7 @@ $ctaWidth: 7rem;
     }
     #wrap-body {
         #cta {
-            left: calc(50% - 3.5rem);
+            left: calc(50% - 4rem);
         }
     }
 }
