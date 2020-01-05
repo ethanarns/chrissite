@@ -65,7 +65,7 @@ body {
       width: 8rem;
       cursor: pointer;
       position: relative;
-      left: 50%;
+      left: calc(50% - 4rem);
       background-color: #fd9c47;
       top: 13.5rem;
       border-radius: 4px;
