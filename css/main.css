@@ -18,21 +18,17 @@ body {
   width: 100%;
   height: 10rem;
   background-color: #ffffff;
-  -webkit-box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.4);
-          box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.4);
   position: relative; }
   #wrap-header header {
     height: 10rem;
     margin: 0 auto;
     max-width: 1400px;
     width: 100%; }
-    #wrap-header header a {
-      display: block;
-      width: 100%; }
-      #wrap-header header a img {
-        padding: 1rem;
-        height: 8rem;
-        float: left; }
+    #wrap-header header img {
+      padding: 1rem;
+      height: 8rem;
+      float: left; }
     #wrap-header header ul {
       float: right;
       height: 10rem;
@@ -62,65 +58,43 @@ body {
     position: relative;
     height: 30rem;
     background-position: center;
-    background-color: #4178cf;
+    background-color: white;
     background-size: cover;
-    text-align: center; }
+    background-image: url("../images/carpet-cleaning-header2.png"); }
     #wrap-body section button {
-      height: 4rem;
-      width: 10rem;
+      height: 3rem;
+      width: 7rem;
       cursor: pointer;
-      background-color: #f09b3b;
+      position: relative;
+      left: 50%;
+      background-color: #3268be;
+      top: 13.5rem;
       border-radius: 4px;
-      -webkit-box-shadow: 0px 0px 14px -1px #275091;
-              box-shadow: 0px 0px 14px -1px #275091;
-      padding: 0;
-      margin-top: 20rem; }
+      border: 1px solid #275091;
+      box-shadow: 0px 0px 14px -1px #275091; }
       #wrap-body section button a {
-        color: white;
+        color: #ffffff;
+        text-shadow: 1px 1px 0px grey;
         text-decoration: none;
         display: inline-block;
-        height: 4rem;
-        font-size: 1.5rem;
-        line-height: 3.96rem;
-        width: 100%; }
+        height: 3rem;
+        line-height: 2.97rem; }
     #wrap-body section button:hover {
       background-color: #4178cf; }
-    #wrap-body section .heroText {
-      color: #f8f8f8;
-      position: absolute;
-      text-align: center;
-      top: 10rem;
-      width: 100%; }
-      #wrap-body section .heroText h3 {
-        font-size: 2.5rem;
-        text-align: center;
-        margin: 0;
-        margin-bottom: 1rem; }
-      #wrap-body section .heroText small {
-        font-size: 1rem; }
 
 @media only screen and (max-width: 600px) {
   #wrap-header {
     height: 6.6666666667rem !important; }
-    #wrap-header header > a {
-      height: 6.6666666667rem;
-      text-align: center; }
-    #wrap-header ul {
-      display: none; }
     #wrap-header li {
       padding: 0 !important;
       padding-right: 1rem !important;
       line-height: 6.6666666667rem !important;
       font-size: 1.25rem !important; }
     #wrap-header img {
-      margin: 0 auto;
-      float: none !important;
       padding: 0.6666666667rem !important;
-      height: 5.3333333333rem !important; } }
-#browserupgrade {
-  width: 100%;
-  height: 1rem;
-  text-align: center;
-  line-height: 1rem; }
+      height: 5.3333333333rem !important; }
+
+  #wrap-body #cta {
+    left: calc(50% - 3.5rem); } }
 
 /*# sourceMappingURL=main.css.map */
