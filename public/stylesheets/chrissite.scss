@@ -1,0 +1,219 @@
+$mainBlue: #3268be;
+$darkerBlue: #275091;
+$lighterBlue: #4178cf;
+$complimentary: #fd9c47;
+$complimentary-light: #ffb06b;
+$white: #ffffff;
+$headerHeight: 9rem;
+$imgPadding: 1rem;
+$imgPaddingMobile: $imgPadding / 1.5;
+$headerHeightMobile: $headerHeight / 1.5;
+$maxWidth: 1400px;
+$callUsHeight: 2rem;
+
+body {
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 28;
+}
+
+// Hider
+.poof {
+    display: none;
+}
+
+#callUs {
+    z-index: 10;
+    background-color: $mainBlue;
+    height: $callUsHeight;
+    line-height: $callUsHeight;
+    text-align: center;
+    color: $white;
+}
+
+#wrap-header {
+    z-index: 10;
+    width: 100%;
+    height: $headerHeight;
+    background-color: $white;
+    box-shadow: 3px 1px 5px rgba(0,0,0,.4);
+    position: relative;
+    header {
+        height: $headerHeight;
+        margin: 0 auto;
+        max-width: $maxWidth;
+        width: 100%;
+        img {
+            padding: $imgPadding;
+            height: $headerHeight - ($imgPadding * 2);
+            float: left;
+        }
+        ul {
+            float: right;
+            height: $headerHeight;
+            // background-color: red;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+            li {
+                display: block;
+                position: relative;
+                height: $headerHeight;
+                padding: 0 2rem;
+                line-height: $headerHeight;
+                float: right;
+                font-size: 1.25rem;
+                a {
+                    text-decoration: none;
+                    color: #000000;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+$bodyHeaderHeight: 45rem;
+$ctaHeight: 3rem;
+$ctaWidth: 8rem;
+#wrap-body {
+    margin: 0 auto;
+    //max-width: $maxWidth;
+    width: 100%;
+    height: $bodyHeaderHeight;
+    background-color: transparent;
+    section.hero {
+        width: 100%;
+        position: relative;
+        height:$bodyHeaderHeight;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #c08647;
+        background-size: cover;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/family-room-670281.jpg");
+        padding: 5rem;
+        box-sizing: border-box;
+        div.innerSpace {
+            height: 100%;
+            position: relative;
+            //background-color: white;
+            div.textWrap {
+                color: #ffffff;
+                float: left;
+                width: 70%;
+                h1 {
+                    text-align: center;
+                }
+            }
+            $borderRadius: 0.5rem;
+            div.formWrap {
+                background-color: #ffffff;
+                float: right;
+                min-width: 30rem;
+                width: 30%;
+                //height: 100%;
+                $formHeaderHeight: 6rem;
+                border-radius: $borderRadius;
+                h3 {
+                    border-top-left-radius: $borderRadius;
+                    border-top-right-radius: $borderRadius;
+                    background-color: #c9c9c9;
+                    width: 100%;
+                    margin: 0;
+                    font-size: 2rem;
+                    text-align: center;
+                    height: $formHeaderHeight;
+                    line-height: $formHeaderHeight;
+                }
+                form {
+                    text-align: center;
+                    padding: 1rem;
+                    margin-bottom: 1rem;
+                    input, textarea {
+                        margin-top: 1rem;
+                        position: static;
+                        width: 90%;
+                    }
+                    textarea {
+                        padding: 0.5rem;
+                    }
+                    input.submit {
+                        margin-top: 2rem;
+                        width: 50%;
+                        margin-bottom: 1rem;
+                    }
+                    p {
+                        text-align: left;
+                        width: 90%;
+                        margin-left: 0.5rem;
+                    }
+                    div.radioWrap {
+                        margin-top: 1rem;
+                        width: 90%;
+                        display: block;
+                        height: 1rem;
+                        input {
+                            width: 1rem;
+                            margin-top: 0;
+                            float: left;
+                            width: 10%;
+                        }
+                        label {
+                            display: block;
+                            width: 90%;
+                            float: right;
+                        }
+                        width: 90%;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+        // button {
+        //     height: $ctaHeight;
+        //     width: $ctaWidth;
+        //     cursor: pointer;
+        //     position: relative;
+        //     //left: 50%;
+        //     left: calc(50% - 4rem);
+        //     background-color: $complimentary;
+        //     top: ($bodyHeaderHeight / 2)-($ctaHeight / 2);
+        //     border-radius: 4px;
+        //     border: 1px solid $darkerBlue;
+        //     box-shadow: 0px 0px 14px -1px $darkerBlue;
+        //     a {
+        //         color: $white;
+        //         text-shadow:1px 1px 0px grey;
+        //         text-decoration: none;
+        //         display: inline-block;
+        //         height: $ctaHeight;
+        //         line-height: $ctaHeight*0.99;
+        //     }
+        // }
+        // button:hover {
+        //     background-color: $complimentary-light;
+        // }
+    }
+}
+
+// Mobile mode
+@media only screen and (max-width: 600px) {
+    #wrap-header {
+        height: $headerHeightMobile !important;
+        li {
+            padding: 0 !important;
+            padding-right: 1rem !important;
+            line-height: $headerHeightMobile !important;
+            font-size: 1.25rem !important;
+        }
+        img {
+            padding: $imgPaddingMobile !important;
+            height: $headerHeightMobile - ($imgPaddingMobile * 2) !important;
+        }
+    }
+    #wrap-body {
+        #cta {
+            left: calc(50% - 4rem);
+        }
+    }
+}

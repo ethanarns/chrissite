@@ -1,0 +1,123 @@
+#!/usr/bin/env node
+
+const express = require('express');
+const app = require('../app');
+const fs = require('fs');
+const https = require('https');
+const logger = require('../libraries/logger');
+logger.verbose("Launching server");
+
+const HTTP_PORT = 80;
+const HTTPS_PORT = 443;
+
+// Checks for environment variable SKIP_HTTPS_REDIRECT (or without the S)
+var useHttpsRedirect = true;
+if ( process.env.SKIP_HTTP_REDIRECT != undefined ) {
+  useHttpsRedirect = process.env.SKIP_HTTP_REDIRECT.toLowerCase().trim() != 'true';
+} else if ( process.env.SKIP_HTTPS_REDIRECT != undefined ) {
+  useHttpsRedirect = process.env.SKIP_HTTPS_REDIRECT.toLowerCase().trim() != 'true';
+}
+
+if (useHttpsRedirect) {
+  logger.debug("Using HTTPS redirect");
+} else {
+  logger.warn("Skipping HTTPS redirect");
+}
+
+logger.debug("Attempting to read SSL key and cert...");
+var ssl;
+try {
+  ssl = {
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+  }
+} catch(error) {
+  if (error.code == "ENOENT") {
+    logger.error("Error enabling SSL: No .key and .cert files found");
+  } else {
+    logger.error(JSON.stringify(error))
+  }
+  process.exit(error.errno);
+}
+logger.verbose("Loaded SSL certs successfully");
+
+logger.debug("Setting port...");
+var port = normalizePort(process.env.PORT || HTTPS_PORT);
+app.set('port', port);
+logger.debug(`'port' variable in app set to ${port}`);
+
+/**
+ * Creating the true HTTPS server
+ */
+logger.debug("Creating HTTPS server...");
+var server = https.createServer(ssl,app)
+server.on('error', onError);
+server.listen(port,(err) => {
+  if (err) throw err;
+  logger.info("Server now listening on " + server.address().port);
+}); // Standard HTTPS (SSL) port
+logger.verbose("HTTPS server created successfully");
+
+/**
+ * Basic HTTP server, used to catch requests then redirect
+ */
+if (useHttpsRedirect) {
+  logger.debug("Creating HTTP server for redirects...");
+  var server_http = express();
+  server_http.on('error', onError);
+  // Redirect any and all traffic to HTTPS server
+  server_http.all('*',(req,res) => {
+    logger.verbose(`Visited port ${HTTP_PORT}, attempting redirect to HTTPS...`);
+    if (!req.headers.host) {
+      console.warn("No Host header found, cannot redirect. Returning 400.");
+      res.status(400).end();
+    } else if (!req.url) {
+      console.warn("How does a request not have a URL variable?");
+      res.status(400).end();
+    } else {
+      res.redirect('https://' + req.headers.host + req.url)
+      logger.verbose("Redirected successfully");
+    }
+  });
+  server_http.listen(HTTP_PORT, (err) => {
+    if (err) throw err;
+    logger.info("HTTP redirect server started on port " + HTTP_PORT);
+  });
+}
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+  if (isNaN(port)) {
+    return val; // named pipe
+  } else if (port >= 0) {
+    return port; // port number
+  } else {
+    return false; // wtf
+  }
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      logger.error(bind + ' requires elevated privileges (sudo/root needed for 443/80)');
+      process.exit(1);
+    case 'EADDRINUSE':
+      logger.error(bind + ' is already in use (Kill other processes)');
+      process.exit(1);
+    default:
+      throw error;
+  }
+}

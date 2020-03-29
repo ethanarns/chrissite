@@ -1,1 +1,16 @@
-*.map
+# Security specific to machine
+server.cert
+server.key
+sshto.sh
+post-receive*
+
+# Duh
+node_modules/
+
+# Since we use SCSS
+*.css.map
+*.css
+
+# Logging
+logs/
+*.log

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="Carpet Cleaning Services">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="/stylesheets/chrissite.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+<!--
+    TODO:
+    - Page/section for why not to use other methods. Steam method isn't good
+    - Other page about Contact
+    - About owner in separate page
+-->
+
+<body>
+  <!--[if IE]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+  <div id="callUs">Call now for a free quote at <strong>(408) 656</strong><strong
+      class="poof">54</strong><strong>-5323</strong></div>
+  <div id="wrap-header">
+    <header>
+      <img src="/images/arnsLogo_transparent2.png">
+      <ul>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Home</a>
+        </li>
+      </ul>
+    </header>
+  </div>
+  <div id="wrap-body">
+    <!-- Add bonnet method of carpet cleaning -->
+    <section class="hero">
+      <div class="innerSpace">
+        <div class="textWrap">
+          <h1>Local, professional, and ecofriendly carpet cleaning</h1>
+        </div>
+        <div class="formWrap">
+          <h3>Request a Quote</h3>
+          <form action="/postHandler/submitQuestion/" method="post">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="tel" name="telephone" placeholder="Phone Number">
+            <input type="email" name="email" placeholder="Email Address">
+            <input type="text" name="location" placeholder="Location">
+            <textarea
+              name="question" placeholder="Your Question"
+              rows=2 required
+            ></textarea>
+            <p>How would you prefer we contact you?</p>
+            <div class="radioWrap">
+              <input type="radio" name="preferredContact" value="Email" id="rEmail">
+              <label for="rEmail">Email</label>
+            </div>
+            <div class="radioWrap">
+              <input type="radio" name="preferredContact" value="Phone" id="rPhone">
+              <label for="rPhone">Phone</label>
+            </div>
+            <input type="submit" value="Request" class="submit">
+          </form>
+        </div>
+      </div>
+      <!--<button id="cta"><a href="#cta">Free Quote</a></button>-->
+    </section>
+  </div>
+
+</body>
+
+</html>
